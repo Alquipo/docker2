@@ -2,6 +2,12 @@ FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
+# Copiar package.json e package-lock.json (se existir)
+COPY package*.json ./
+
+# Instalar dependências do projeto
+RUN npm install
+
 RUN apk add --no-cache openssl
 
 ENV DOCKERIZE_VERSION v0.6.1
